@@ -9,7 +9,7 @@ var FancyForms = Class.create({
 
   set_text_field_behaviour: function(text_fields){
     text_fields.each(function(text_field){
-        if(text_field.hasClassName("NumberParameter")) text_field.observe('keypress', this.only_allow_numbers.bind(this));;
+        if(text_field.hasClassName("only_numbers")) text_field.observe('keypress', this.only_allow_numbers.bind(this));;
     }, this);
   },
 
@@ -53,7 +53,7 @@ var FancyForms = Class.create({
   },
 
   valid_form: function(form){
-    return form.select("input.text_field").all(function(text_field){
+    return form.select("input.text_field.required").all(function(text_field){
       return text_field.value != "";
     });
   },
