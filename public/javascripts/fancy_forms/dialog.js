@@ -31,7 +31,7 @@ var Dialog = {
   },
 
   showNotification: function(title, content){
-    var template = "<div class=\"icon exclamation\"></div><div class=\"notification_content\">" + content + "</div><div class=\"clear_left\"></div>";
+    var template = "<div class=\"icon exclamation\"></div><div class=\"notification_content\">" + content + "</div><div style=\"clear:left;\"></div>";
     Dialog.show(title, template, {size: 'notification', style: 'shake'});
   },
 
