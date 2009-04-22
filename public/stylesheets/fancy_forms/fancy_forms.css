@@ -1,0 +1,65 @@
+input.text_field {
+}
+
+a.fancy_form_button, a.fancy_form_link_button {
+  display: inline-block;
+  height: 30px;
+  background: transparent url(../../images/fancy_forms/buttons.png) no-repeat -161px -123px;
+  padding-left: 14px;
+  cursor: pointer;
+}
+
+a.fancy_form_button span, a.fancy_form_link_button span {
+  display: block;
+  float: left;
+  height: 25px;
+  background: transparent url(../../images/fancy_forms/buttons.png) right -3px;
+  padding: 6px 20px 0px 5px; 
+  color: #000000;
+  font-family:"Lucida Grande","Trebuchet MS",Verdana;
+  font-size:9pt;
+}
+/*
+
+a.fancy_form_button:hover, a.fancy_form_link_button:hover {
+  background-position: -161px -153px;
+  cursor: pointer;
+}
+
+a.fancy_form_button:hover span, a.fancy_form_link_button:hover span {
+  background-position: right -33px;
+}
+*/
+a.fancy_form_button.click, a.fancy_form_link_button.click {
+  background-position: -161px -183px;
+}
+
+a.fancy_form_button.click span, a.fancy_form_link_button.click span {
+  background-position: right -63px;
+}
+
+/* blue buttons */
+a.fancy_form_button.blue, a.fancy_form_link_button.blue {
+  background-position: -161px -363px;
+}
+
+a.fancy_form_button.blue span, a.fancy_form_link_button.blue span {
+  background-position: right -243px;
+}
+/*
+a.fancy_form_button.blue:hover, a.fancy_form_link_button.blue:hover {
+  background-position: -161px -393px;
+}
+
+a.fancy_form_button.blue:hover span, a.fancy_form_link_button.blue:hover span {
+  background-position: right -273px;
+}
+*/
+a.fancy_form_button.blue.click, a.fancy_form_link_button.blue.click {
+  background-position: -161px -423px;
+}
+
+a.fancy_form_button.blue.click span, a.fancy_form_link_button.blue.click span {
+  background-position: right -303px;
+}
+
