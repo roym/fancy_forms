@@ -1,0 +1,144 @@
+div.overlay {
+ background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index:998;
+  opacity: .6;
+  filter:alpha(opacity=60);   /* Internet Explorer       */	
+}
+
+div.dialog {
+  position:relative;
+  background: #FFFFFF url(../../images/fancy_forms/dialog/panel_grad_bg.png) repeat-x scroll center bottom;
+  width: 964px;
+  margin: 0 auto;
+  z-index:999;
+  top: 20px;
+}
+
+div.dialog.notification {
+  width: 350px;
+  top:200px;
+}
+
+
+.top-left-edge {
+  background:transparent url(../../images/fancy_forms/dialog/shadow_corners.png) no-repeat scroll 0 -160px;
+  height:40px;
+  left:-20px;
+  position:absolute;
+  top:-20px;
+  width:40px;
+}
+
+.top-edge {
+  background:transparent url(../../images/fancy_forms/dialog/shadows_repeat_x.png) repeat-x scroll 0 -60px;
+  height:20px;
+  left:20px;
+  position:absolute;
+  right:20px;
+  top:-20px;
+}
+
+.top-right-edge {
+  background:transparent url(../../images/fancy_forms/dialog/shadow_corners.png) no-repeat scroll 0 -240px;
+  height:40px;
+  position:absolute;
+  right:-20px;
+  top:-20px;
+  width:40px;
+}
+
+.left-edge {
+  background:transparent url(../../images/fancy_forms/dialog/shadows_repeat_y.png) repeat-y scroll -60px 0;
+  bottom:20px;
+  left:-20px;
+  position:absolute;
+  top:20px;
+  width:20px;
+}
+
+.right-edge {
+  background:transparent url(../../images/fancy_forms/dialog/shadows_repeat_y.png) repeat-y scroll -90px 0;
+  bottom:20px;
+  position:absolute;
+  right:-20px;
+  top:20px;
+  width:20px;
+}
+
+.bottom-left-edge {
+  background:transparent url(../../images/fancy_forms/dialog/shadow_corners.png) no-repeat scroll 0 -200px;
+  bottom:-20px;
+  height:40px;
+  left:-20px;
+  position:absolute;
+  width:40px;
+}
+
+.bottom-edge {
+  background:transparent url(../../images/fancy_forms/dialog/shadows_repeat_x.png) repeat-x scroll 0 -90px;
+  bottom:-20px;
+  height:20px;
+  left:20px;
+  position:absolute;
+  right:20px;
+}
+
+.bottom-right-edge {
+  background:transparent url(../../images/fancy_forms/dialog/shadow_corners.png) no-repeat scroll 0 -280px;
+  bottom:-20px;
+  height:40px;
+  position:absolute;
+  right:-20px;
+  width:40px;
+}
+
+.dialog_header {
+  background:transparent url(../../images/fancy_forms/dialog/controls.png) repeat-x scroll 0 -3744px;
+  height:33px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 0 0 10px;
+
+  background: transparent url(../../images/fancy_forms/dialog/controls.png) repeat-x scroll left -3696px;
+  font-family:Arial,sans-serif; 
+}
+
+.dialog_content {
+}
+
+div.seperator {
+  background:transparent url(../../images/fancy_forms/dialog/controls.png) repeat-x scroll 0 -5600px;
+  height:2px;
+  margin:14px 0 4px -4px;
+}
+div.close_button {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  width: 30px;
+  height: 30px;
+  background: transparent url(../../images/fancy_forms/dialog/overlay_close_button.png);
+}
+
+div.icon {
+  width: 75px;
+  height: 75px;
+  float: left;
+}
+
+div.icon.exclamation {
+  background: transparent url(../../images/fancy_forms/dialog/icon_exclamation.png) no-repeat 50% 50%;
+} 
+
+div.notification_content {
+  float: left;
+  color: #333;
+  font-size: 18px;
+  padding-top: 25px;
+}
