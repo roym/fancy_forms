@@ -5,11 +5,22 @@ var FancyForms = Class.create({
     
     this.text_fields = $$('input.text_field');
     this.set_text_field_behaviour(this.text_fields);
+
+		$$('input').each(function(input){
+			input.observe('keypress', this.submit_form.bind(this));
+		});
   },
 
+	submit_form: function(event){
+		keycode = window.event ? window.event.keyCode : event.which;
+    if (keycode == 13) {
+			this.button_click_event(event)
+    }
+	},
+	
   set_text_field_behaviour: function(text_fields){
     text_fields.each(function(text_field){
-        if(text_field.hasClassName("only_numbers")) text_field.observe('keypress', this.only_allow_numbers.bind(this));;
+        if(text_field.hasClassName("only_numbers")) text_field.observe('keypress', this.only_allow_numbers.bind(this));
     }, this);
   },
 
