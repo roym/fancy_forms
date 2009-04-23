@@ -8,7 +8,7 @@ var FancyForms = Class.create({
 
 		$$('input').each(function(input){
 			input.observe('keypress', this.submit_form.bind(this));
-		});
+		}, this);
   },
 
 	submit_form: function(event){
