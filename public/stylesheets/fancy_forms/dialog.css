@@ -11,12 +11,11 @@ div.overlay {
 }
 
 div.dialog {
-  position:relative;
+  position:absolute;
   background: #FFFFFF url(../../images/fancy_forms/dialog/panel_grad_bg.png) repeat-x scroll center bottom;
   width: 964px;
-  margin: 0 auto;
   z-index:999;
-  top: 20px;
+  /*top: 20px;*/
 }
 
 div.dialog.notification {

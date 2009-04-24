@@ -15,15 +15,39 @@ var Dialog = {
     if( options.size != undefined ) $('dialog').addClassName(options.size);
 
     overlay.show();
+    dialog.show();
+
+    this.centerDialog(dialog);
 
     if( options.style != undefined ){
       if( options.style == "shake") {
         dialog.shake({duration: .5, distance: 10});
-        dialog.appear({duration: .4});
       }
-    } else {
-      dialog.show();
     }
+  },
+
+  centerDialog: function(dialog){
+    var offsetTop = document.viewport.getScrollOffsets().top
+    var offsetLeft = document.viewport.getScrollOffsets().left
+
+    var window_width = document.viewport.getWidth();
+    var window_height = document.viewport.getHeight();
+
+    var dialog_width = dialog.getWidth();
+    var dialog_height = dialog.getHeight();
+
+    var left =  ((window_width / 2) - (dialog_width / 2) + offsetLeft);
+    var top = ((window_height / 2) - (dialog_height / 2) + offsetTop);
+
+    if( left < 10 ) left = 10;
+    if( top < 10 ) top = 10;
+    
+    dialog.setStyle({
+      'left': left + 'px',
+      'top': top + 'px'
+    });
+
+
   },
 
   showPDF: function(title, content){
