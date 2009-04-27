@@ -4,7 +4,7 @@ input.text_field {
 a.fancy_form_button, a.fancy_form_link_button {
   display: inline-block;
   height: 30px;
-  background: transparent url(../../images/fancy_forms/buttons.png) no-repeat -161px -123px;
+  background: transparent url(../../images/fancy_forms/buttons.png) no-repeat -386px -123px;
   padding-left: 14px;
   cursor: pointer;
 }
@@ -22,7 +22,7 @@ a.fancy_form_button span, a.fancy_form_link_button span {
 /*
 
 a.fancy_form_button:hover, a.fancy_form_link_button:hover {
-  background-position: -161px -153px;
+  background-position: -386px -153px;
   cursor: pointer;
 }
 
@@ -31,7 +31,7 @@ a.fancy_form_button:hover span, a.fancy_form_link_button:hover span {
 }
 */
 a.fancy_form_button.click, a.fancy_form_link_button.click {
-  background-position: -161px -183px;
+  background-position: -386px -183px;
 }
 
 a.fancy_form_button.click span, a.fancy_form_link_button.click span {
@@ -40,7 +40,7 @@ a.fancy_form_button.click span, a.fancy_form_link_button.click span {
 
 /* blue buttons */
 a.fancy_form_button.blue, a.fancy_form_link_button.blue {
-  background-position: -161px -363px;
+  background-position: -386px -363px;
 }
 
 a.fancy_form_button.blue span, a.fancy_form_link_button.blue span {
@@ -48,7 +48,7 @@ a.fancy_form_button.blue span, a.fancy_form_link_button.blue span {
 }
 /*
 a.fancy_form_button.blue:hover, a.fancy_form_link_button.blue:hover {
-  background-position: -161px -393px;
+  background-position: -386px -393px;
 }
 
 a.fancy_form_button.blue:hover span, a.fancy_form_link_button.blue:hover span {
@@ -56,7 +56,7 @@ a.fancy_form_button.blue:hover span, a.fancy_form_link_button.blue:hover span {
 }
 */
 a.fancy_form_button.blue.click, a.fancy_form_link_button.blue.click {
-  background-position: -161px -423px;
+  background-position: -386px -423px;
 }
 
 a.fancy_form_button.blue.click span, a.fancy_form_link_button.blue.click span {
