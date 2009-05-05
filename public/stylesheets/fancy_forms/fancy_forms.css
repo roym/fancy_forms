@@ -7,6 +7,7 @@ a.fancy_form_button, a.fancy_form_link_button {
   background: transparent url(../../images/fancy_forms/buttons.png) no-repeat -386px -123px;
   padding-left: 14px;
   cursor: pointer;
+  margin-left: -3px;
 }
 
 a.fancy_form_button span, a.fancy_form_link_button span {
