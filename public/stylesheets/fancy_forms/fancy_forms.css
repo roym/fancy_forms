@@ -1,4 +1,19 @@
 input.text_field {
+	width: 250px;
+	border: solid 1px #666;
+	padding: 4px;
+	margin: 1px;
+}
+
+.text_area:focus, input.text_field:focus {
+	background-color: #eee;
+}
+
+.text_area {
+	width: 250px;
+	border: solid 1px #666;
+	padding: 4px;
+	margin: 1px;
 }
 
 a.fancy_form_button, a.fancy_form_link_button {
