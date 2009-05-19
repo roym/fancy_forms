@@ -36,6 +36,11 @@ a.fancy_form_button span, a.fancy_form_link_button span {
   font-family:"Lucida Grande","Trebuchet MS",Verdana;
   font-size:9pt;
 }
+
+
+a.fancy_form_button:hover, a.fancy_form_link_button:hover {
+  text-decoration: none;
+}
 /*
 
 a.fancy_form_button:hover, a.fancy_form_link_button:hover {
