@@ -1,83 +1,70 @@
-var FancyForms = Class.create({
-  initialize: function(){
-    this.buttons = $$('a.fancy_form_button');
-    this.bind_buttons();
-    
-    this.text_fields = $$('input.text_field');
-    this.set_text_field_behaviour(this.text_fields);
-
-		$$('input').each(function(input){
-			input.observe('keypress', this.submit_form.bind(this));
-		}, this);
-  },
-
-	submit_form: function(event){
-		keycode = window.event ? window.event.keyCode : event.which;
-    if (keycode == 13) {
-			this.button_click_event(event)
-    }
-	},
+document.observe("dom:loaded", function(){
+	var config = {
+		button_class: "fancy_form_button",
+		link_class: "fancy_form_link_button",
+		text_field_required_class: "input.text_field.required",
+		click_class: "click"
+	}
 	
-  set_text_field_behaviour: function(text_fields){
-    text_fields.each(function(text_field){
-        if(text_field.hasClassName("only_numbers")) text_field.observe('keypress', this.only_allow_numbers.bind(this));
-    }, this);
-  },
+	any_match = function(arr1, arr2){
+		found = false
+		
+		for(var i = 0, ilen = arr1.length; i < ilen; i++){
+			if( found == true ) break;
+			
+			for( var j = 0, jlen = arr2.length; j < jlen; j++){
+				if( found == true ) break;
+				
+				found = (arr1[i] == arr2[j]);
+			}
+		}
+		
+		return found;	
+	}
+	
+	getElement = function(element) {
+    return element.tagName == "A" ? element : element.up();		
+	}
+	
+	document_click = function(event) {
+		element = getElement(event.element());
 
-  only_allow_numbers: function(event){
-    //event.stop();
+		if( element.hasClassName(config.button_class) ){
+			button_click_event(event);
+		}
+	}
+	
+	document_mousedown = function(event) {
+		element = getElement(event.element());
+		
+		if( any_match( $w(element.className), [config.button_class, config.link_class]) ){
+			element.addClassName(config.click_class);
+		}
+	}
+	
+	document_mouseup = function(event) {
+		element = getElement(event.element());
 
-    keycode = window.event ? window.event.keyCode : event.which;
-    if (keycode > 31 && (keycode < 48 || keycode > 57)) {
-      event.stop();
-    }
-  },
+		if( any_match( $w(element.className), [config.button_class, config.link_class]) ){
+			element.removeClassName(config.click_class);
+		}
+	}
 
-  bind_buttons: function(){
-    this.buttons.each(function(button){
-      button.observe('mousedown', this.button_mouse_down_event.bind(this));
-      button.observe('mouseup', this.button_mouse_up_event.bind(this));
-      button.observe('mouseout', this.button_mouse_up_event.bind(this));
-      button.observe('click', this.button_click_event.bind(this));
-      this.disableSelection(button);
-    }, this);
-
-    $$('a.fancy_form_link_button').each(function(button){
-      button.observe('mousedown', this.button_mouse_down_event.bind(this));
-      button.observe('mouseup', this.button_mouse_up_event.bind(this));
-      button.observe('mouseout', this.button_mouse_up_event.bind(this));
-      this.disableSelection(button);
-    },this);
-
-  },
-
-  button_mouse_down_event: function(event){
-    element = event.element();
-    element = element.tagName == "A" ? element : element.up();
-    element.addClassName("click");
-  },
-
-  button_mouse_up_event: function(event){
-    element = event.element();
-    element = element.tagName == "A" ? element : element.up();
-    element.removeClassName("click");
-  },
-
-  valid_form: function(form){
-    return form.select("input.text_field.required").all(function(text_field){
+	valid_form = function(form){
+    return form.select(config.text_field_required_class).all(function(text_field){
       return text_field.value != "";
     });
-  },
+  }
 
-  button_click_event: function(event){
-    if( this.valid_form(event.element().up('form')) ){  
+	button_click_event = function(event){
+		if( valid_form(event.element().up('form')) ){  
       event.element().up('form').submit();
     } else {
       Dialog.showNotification('Velden error', 'Niet alle velden zijn gevuld');
     }
-  },
-
-  disableSelection: function(target){
+	}
+	
+	disableSelection = function(target){
     if (typeof target.onselectstart!="undefined") //IE route
     	target.onselectstart=function(){return false}
     else if (typeof target.style.MozUserSelect!="undefined") //Firefox route
@@ -86,9 +73,13 @@ var FancyForms = Class.create({
     	target.onmousedown=function(){return false}
     target.style.cursor = "default"
   }
-  
-});
+	
+	document.observe("click", document_click);
+  document.observe('mousedown', document_mousedown);
+  document.observe('mouseup', document_mouseup);
+  document.observe('mouseout', document_mouseup);
 
-document.observe("dom:loaded", function(event){
-  fancy_forms = new FancyForms();
+	$$("." + config.button_class + ", ." + config.link_class).each( function(button){
+		disableSelection(button);
+	});
 });

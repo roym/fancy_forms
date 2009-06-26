@@ -15,39 +15,15 @@ var Dialog = {
     if( options.size != undefined ) $('dialog').addClassName(options.size);
 
     overlay.show();
-    dialog.show();
-
-    this.centerDialog(dialog);
 
     if( options.style != undefined ){
       if( options.style == "shake") {
         dialog.shake({duration: .5, distance: 10});
+        dialog.appear({duration: .4});
       }
+    } else {
+      dialog.show();
     }
-  },
-
-  centerDialog: function(dialog){
-    var offsetTop = document.viewport.getScrollOffsets().top
-    var offsetLeft = document.viewport.getScrollOffsets().left
-
-    var window_width = document.viewport.getWidth();
-    var window_height = document.viewport.getHeight();
-
-    var dialog_width = dialog.getWidth();
-    var dialog_height = dialog.getHeight();
-
-    var left =  ((window_width / 2) - (dialog_width / 2) + offsetLeft);
-    var top = ((window_height / 2) - (dialog_height / 2) + offsetTop);
-
-    if( left < 10 ) left = 10;
-    if( top < 10 ) top = 10;
-    
-    dialog.setStyle({
-      'left': left + 'px',
-      'top': top + 'px'
-    });
-
-
   },
 
   showPDF: function(title, content){
@@ -55,7 +31,7 @@ var Dialog = {
   },
 
   showNotification: function(title, content){
-    var template = "<div class=\"icon exclamation\"></div><div class=\"notification_content\">" + content + "</div><div style=\"clear:left;\"></div>";
+    var template = "<div class=\"icon exclamation\"></div><div class=\"notification_content\">" + content + "</div><div class=\"clear_left\"></div>";
     Dialog.show(title, template, {size: 'notification', style: 'shake'});
   },
 
@@ -92,19 +68,41 @@ var Dialog = {
     Element.insert(document.body, {bottom: template});  
     /* document.body.insert({ bottom: template }); */
     return $('dialog');
+  },
 
-  }
+	rebind: function(){
+	  $$("a.dialog").each(function(link){
+	    link.observe('click', function(event){
+	      if( link.hasClassName("pdf") ){
+	        Dialog.showPDF(link.title, link.href);
+	      	event.stop();
+	      }
+	    });
+	  });		
+	}
 };
 
 document.observe("dom:loaded", function(){
-  $$("a.dialog").each(function(link){
-    link.observe('click', function(event){
-      event.stop();
-      
-      if( link.hasClassName("pdf") ){
-        Dialog.showPDF(link.title, link.href);
-      }
-    });
-  });
+	config = {
+		dialog_class: "dialog",
+		pdf_class: "pdf"
+	}
+	
+	getElement = function(element) {
+    return element.tagName == "A" ? element : element.up();		
+	}
+	
+	document_click = function(event){
+		element = getElement(event.element());
+		
+		if( element.hasClassName(config.dialog_class) ){
+			if(element.hasClassName(config.pdf_class)){
+				Dialog.showPDF(element.title, element.href);
+				event.stop();
+			}
+		}
+	}
+
+	document.observe("click", document_click);	
 });
 
